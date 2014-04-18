@@ -46,15 +46,15 @@ class SeoUrl
      * Constructor by default.
      */
     public function __construct() {
-        $this->separator_chars_to_replace   = array(' ', '&', '\r\n', '\n', '+', '_');
+        $this->separator_chars_to_replace   = array( ' ', '&', '\r\n', '\n', '+', '_' );
         
-        $this->latin_chars_to_replace       = array('á', 'é', 'í', 'ó', 'ú', 'ñ', 'à', 'è', 'ì', 'ò', 'ù',
-            'Á', 'É', 'Í', 'Ó', 'Ú', 'À', 'È', 'Ì', 'Ò', 'Ù', 'Ñ');
-        $this->latin_chars_valids           = array('a', 'e', 'i', 'o', 'u', 'n', 'a', 'e', 'i', 'o', 'u',
-            'a', 'e', 'i', 'o', 'u', 'a', 'e', 'i', 'o', 'u', 'n');
+        $this->latin_chars_to_replace       = array( 'á', 'é', 'í', 'ó', 'ú', 'ñ', 'à', 'è', 'ì', 'ò', 'ù',
+            'Á', 'É', 'Í', 'Ó', 'Ú', 'À', 'È', 'Ì', 'Ò', 'Ù', 'Ñ' );
+        $this->latin_chars_valids           = array( 'a', 'e', 'i', 'o', 'u', 'n', 'a', 'e', 'i', 'o', 'u',
+            'a', 'e', 'i', 'o', 'u', 'a', 'e', 'i', 'o', 'u', 'n' );
         
-        $this->pattern_chars_to_sanitize    = array('/[^a-z0-9\-<>]/', '/[\-]+/', '/<[^>]*>/');
-        $this->chars_sanitized              = array('', '-', '');
+        $this->pattern_chars_to_sanitize    = array( '/[^a-z0-9\-<>]/', '/[\-]+/', '/<[^>]*>/' );
+        $this->chars_sanitized              = array( '', '-', '' );
         
     }
     
@@ -67,7 +67,7 @@ class SeoUrl
     public function get( $string_to_seo_url ) {        
         return $this->sanitizeString(
             $this->replaceLatinChars(
-                $this->replaceSeparatorCharsToHyphen($string_to_seo_url)
+                $this->replaceSeparatorCharsToHyphen( $string_to_seo_url )
             )
         );
     }
@@ -93,7 +93,7 @@ class SeoUrl
      * @return string
      */
     protected function replaceSeparatorCharsToHyphen( $string ) {       
-        return str_replace ($this->separator_chars_to_replace, '-', $string);
+        return str_replace ( $this->separator_chars_to_replace, '-', $string );
     }
     
     /**

@@ -6,7 +6,7 @@ class SeoUrlTest extends PHPUnit_Framework_TestCase
 {
     protected $object;
     public function setUp() {
-        require_once '../src/SeoUrl.php';
+        require_once '../../src/Helpers/SeoUrl.php';
         $this->object = new Helpers\SeoUrl();        
     }
     
