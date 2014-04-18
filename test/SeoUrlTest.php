@@ -1,6 +1,6 @@
 <?php
 
-use Helpers;
+use Helpers\SeoUrl;
 
 class SeoUrlTest extends PHPUnit_Framework_TestCase
 {
@@ -22,12 +22,24 @@ class SeoUrlTest extends PHPUnit_Framework_TestCase
               'expected'            => 'foo-bar',
             ),
             'Three words' => array(
-              'string_to_seo_url'   => 'Foo Bar Baz',
+              'string_to_seo_url'   => 'Foo Bar_Baz',
               'expected'            => 'foo-bar-baz',
             ),
             "Words with '-'" => array(
               'string_to_seo_url'   => 'Foo-Bar',
               'expected'            => 'foo-bar',
+            ),
+            "Words with latin chars" => array(
+              'string_to_seo_url'   => 'Martín el maño 926',
+              'expected'            => 'martin-el-mano-926',
+            ),
+            "Words with URL separator chars" => array(
+              'string_to_seo_url'   => 'Ola&k\nase\r\ntomas+birras+o&k\nase',
+              'expected'            => 'ola-k-ase-tomas-birras-o-k-ase',
+            ),
+            "Special chars" => array(
+              'string_to_seo_url'   => 'Ola[k]ase&nbsp;tomas_b‰i—rras+o&k\nase',
+              'expected'            => 'olakase-nbsptomas-birras-o-k-ase',
             ),
         );
     }
